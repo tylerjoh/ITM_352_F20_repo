@@ -1,24 +1,37 @@
-o	/* General */  
+/* General */  
 body {
     width: 800px; 
     margin: 0 auto;
 }
 
 img {
-    width: 200px;
-    height: 200px;
-}
-main {
-    o	display: flex;
-o	flex-flow: row wrap;
-o	justify-content: space-around;
-background-image: url("images/phone_globe.png");
-background-repeat: no-repeat;
+    border: 1px solid #ddd;
+    /* Gray border */
+    border-radius: 4px;
+    /* Rounded border */
+    padding: 5px;
+    /* Some padding */
+    width: 150px;
+    /* Set a small width */
 }
 
-p{
+/* Add a hover effect (blue shadow) */
+img:hover {
+    box-shadow: 0 0 5px 1px black;
+}
+
+main {
+    display: flex;
+    flex-flow: row wrap; 
+    justify-content: space-around;
+    background-image: url("images/phone_globe.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+p {
     text-align: center;
-    font: Arial ;
+    font: Arial;
     font-size: 3vw;
     color: wheat;
 }
@@ -32,7 +45,6 @@ h2 {
 }
 
 div {
-    o	border: 5px solid black;
-o	display: flex;
-
+    border: 5px solid black;
+    display: flex;
 }
