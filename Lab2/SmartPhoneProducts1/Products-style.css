@@ -1,0 +1,38 @@
+o	/* General */  
+body {
+    width: 800px; 
+    margin: 0 auto;
+}
+
+img {
+    width: 200px;
+    height: 200px;
+}
+main {
+    o	display: flex;
+o	flex-flow: row wrap;
+o	justify-content: space-around;
+background-image: url("images/phone_globe.png");
+background-repeat: no-repeat;
+}
+
+p{
+    text-align: center;
+    font: Arial ;
+    font-size: 3vw;
+    color: wheat;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+div {
+    o	border: 5px solid black;
+o	display: flex;
+
+}
