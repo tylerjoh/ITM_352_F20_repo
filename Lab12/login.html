@@ -1,0 +1,21 @@
+<script>
+    function checkLogin() {
+        passwords = { "dport": "spaz", "kazman": "geek" };
+        var username = document.getElementsByName("username_textbox")[0].value;
+        var password = document.getElementsByName("password_textbox")[0].value;
+        if (passwords[username] == password) {
+            // window.location.href = "file:logged_in.html";
+            document.write(`Thank you ${username} for loggin in!`);
+        }
+        else { alert('incorrect login!'); }
+    }
+</script>
+<body>
+    <label for="username_textbox">Username:</label>
+    <input type='text' name='username_textbox'>
+    <br>
+    <label for="password_textbox">Password:</label>
+    <input type='password' name='password_textbox'>
+    <br>
+    <input type='button' name='submit_button' value='Login' onclick="checkLogin();">
+</body>
