@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Tyler Johnson">
+    <meta name="description" content="description of your page">
+    <!-- Add responsive design on smaller screens -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Import Bootstrap CSS library -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- Own CSS style -->
+    <link rel="stylesheet" href="css/style.css">
+    <title>Lululemon Store</title>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            <img src="./imgs/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        </a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">MEN</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">|</a>
+                </li>
+                <li class="nav-item ml-auto">
+                    <a class="nav-link" href="#">TYLER JOHNSON</a>
+                </li>
+                <li class="nav-item ml-auto">
+                    <a class="nav-link" href="#">ITM 352</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content Of Page -->
+
+    <div class="container">
+        <div class="row">
+
+            <div class="card col-3">
+                <img class="card-img-top" src="./imgs/metal-vent.png" alt="Card image cap">
+                <div class="card-body">
+                    <span class="card-text float-left">Metal Vent</span>
+                    <span class="price float-right">$78</span>
+                </div>
+
+                <form name="metal_vent_quantity_form" action="" method="POST">
+                    <label for="metal_vent_quantity_textbox">Quantity</label>
+                    <input type="text" id="metal_vent_quantity_textbox" onkeyup="">
+                    <input type="submit" value="Purchase">
+                </form>
+
+            </div>
+
+            <div class="card col-3">
+                <img class="card-img-top" src="./imgs/THEshort.png" alt="Card image cap">
+                <div class="card-body">
+                    <span class="card-text">T.H.E. Short</span>
+                    <span class="price float-right">$68</span>
+                </div>
+
+                <form name="THE_short_quantity_form" action="" method="POST">
+                    <label for="THE_short_quantity_textbox">Quantity</label>
+                    <input type="text" id="THE_short_quantity_textbox" onkeyup="">
+                    <input type="submit" value="Purchase">
+                </form>
+
+            </div>
+
+            <div class="card col-3">
+                <img class="card-img-top" src="./imgs/jogger.png" alt="Card image cap">
+                <div class="card-body">
+                    <span class="card-text">License to Train Jogger</span>
+                    <span class="price float-right">$128</span>
+                </div>
+
+                <form name="jogger_quantity_form" action="" method="POST">
+                    <label for="jogger_quantity_textbox">Quantity</label>
+                    <input type="text" id="jogger_quantity_textbox" onkeyup="">
+                    <input type="submit" value="Purchase">
+                </form>
+
+            </div>
+
+            <div class="card col-3">
+                <img class="card-img-top" src="./imgs/metal2.png" alt="Card image cap">
+                <div class="card-body">
+                    <span class="card-text">Metal Vent Tech Short Sleeve 2.0</span>
+                    <span class="price float-right">$78</span>
+                </div>
+
+                <form name="metal_2_qquantity_form" action="" method="POST">
+                    <label for="metal_2_quantity_textbox">Quantity</label>
+                    <input type="text" id="metal_2_qquantity_textbox" onkeyup="">
+                    <input type="submit" value="Purchase">
+                </form>
+
+            </div>
+
+            <div class="card col-3">
+                <img class="card-img-top" src="./imgs/bag.png" alt="Card image cap">
+                <div class="card-body">
+                    <span class="card-text">More Miles Duffel 40L</span>
+                    <span class="price float-right">$198</span>
+                </div>
+                <form name="bag_quantity_form" action="" method="POST">
+                    <label for="bag_quantity_textbox">Quantity</label>
+                    <input type="text" id="bag_quantity_textbox" onkeyup="">
+                    <input type="submit" value="Purchase">
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+
+    <!-- Link own JavaScript file -->
+    <script src="javascript/index.js"></script>
+</body>
+
+</html>
