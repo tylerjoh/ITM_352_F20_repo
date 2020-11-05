@@ -62,6 +62,7 @@ THE_short_quantity_textbox.addEventListener('input', function(){
     //console.log(errs);
 })
 
+
 let jogger_quantity_textbox = document.querySelector('#jogger_quantity_textbox');
 jogger_quantity_textbox.addEventListener('input', function(){
     let user_input = jogger_quantity_textbox.value
@@ -69,6 +70,7 @@ jogger_quantity_textbox.addEventListener('input', function(){
     errs = isNonNegInt(user_input, true);
     //console.log(errs);
 })
+
 
 let metal_2_qquantity_textbox = document.querySelector('#metal_2_qquantity_textbox');
 metal_2_qquantity_textbox.addEventListener('input', function(){
