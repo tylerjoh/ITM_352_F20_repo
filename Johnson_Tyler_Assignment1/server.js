@@ -1,6 +1,6 @@
 // Copied from info_server_Ex4.js from Lab13//
 
-var data = require('./public/product_data.js'); //load services_data.js file and set the variable to 'data'//
+var data = require('./public/products_data.js'); //load services_data.js file and set the variable to 'data'//
 var services_array = data.products; //set variable 'services_array' to data.products//
 const queryString = require('query-string'); //read variable 'queryString' as the loaded query-string module//
 var express = require('express'); //load and cache express module//
