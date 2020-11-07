@@ -9,7 +9,7 @@
 
 <body>
     <script>
-        function isNonNegInt(stringToCheck, returnErrors = false) {
+       function isNonNegInt(stringToCheck, returnErrors = false) {
             errors = []; // assume no errors at first
             if (Number(stringToCheck) != stringToCheck) errors.push('Not a number! :('); // Check if string is a number value
             if (stringToCheck < 0) errors.push('Negative value! :('); // Check if it is non-negative
@@ -26,10 +26,9 @@
         function displayPurchase() {
             userInput = quantity_form.quantity_textbox.value;
             if (isNonNegInt(userInput) == true) {
-                document.write(`Thank you for purchasing ${userInput} overpriced pieces of Lululemon apparel! :)`);
+                document.write(`Thank you for purchasing ${userInput} piece(s) of overpriced Lululemon apparel! :)`);
             }
         }
-        
     </script>
 
     <H1> Tyler's Lululemon Store</H1>
