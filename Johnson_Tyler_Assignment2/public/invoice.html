@@ -1,10 +1,10 @@
 <!-- imports products from products_data.js -->
-<script src="./products_data.js" type="text/javascript"></script>
+<script src="./product_data.js" type="text/javascript"></script>
 
 <script>
     let params = (new URL(document.location)).searchParams;
     let quantities = [];
-    if (params.has('submitPurchase')) { 
+    if (params.has('purchase_submit_button')) { 
         // looping over every product
         for (i = 0; i < products.length; i++) {
             // checking if ...

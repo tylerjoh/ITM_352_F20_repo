@@ -1,0 +1,140 @@
+<!-- Login page referenced from w3 schools -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <script>
+        let params = (new URL(document.location)).searchParams;
+
+        window.onload = function () { //Create alert for invalid usernames/passwords
+            if (params.has('LogError')) {
+                alert('Invalid Username or Passowrd');
+            }
+        }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="products_style.css"> <!-- Style Sheet -->
+    <style>
+        /* styling */
+        header,
+        body,
+        form,
+        input,
+        .topnav,
+        .topnav a,
+        .login,
+        .register {
+            font-family: "Playfair Display";
+            letter-spacing: 5px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        body {
+            background-color: lightblue;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        form {
+            text-align: center;
+        }
+
+        input[type=text],
+        input[type=password],
+        input[type=email] {
+            text-align: center;
+            font-size: 15px;
+            width: 60%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+
+        }
+
+        input[type=submit] {
+            font-weight: bold;
+            font-size: 70px;
+            color: black;
+            margin-top: 25px;
+        }
+
+        /* styling the navbar */
+        .topnav {
+            overflow: hidden;
+            background-color: white;
+        }
+
+        .topnav a {
+            float: left;
+            color: black;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        /* Changes color on hover*/
+        .topnav a:hover {
+            background-color: lightblue;
+            color: black;
+        }
+
+        .register {
+            background-color: lightgray;
+        }
+
+        .login {
+            background-color: lightgray;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="topnav">
+        <a class="active" href="./index.html">Home</a> <!-- Connecting to index page -->
+        <a href="./products_display.html">Products</a> <!-- Connecting to products page -->
+
+
+    </div>
+
+    <h1>Boulangerie de Mark's Login Page!</h1>
+    <p>To order our pastries you must<br> login or register as a member</p>
+    <form name="login" action="process_login" method="POST">
+        <div class="container"><br>
+            <input type="text" name="username" id="username" size="40" placeholder="Enter Username" required><br>
+            <input type="password" name="password" size="40" placeholder="Enter Password" onkeyup="" required><br>
+
+            <input type="submit" value="Login" name="login" class="login" style="font-size: 20px;">
+            <!-- Login button -->
+
+
+        </div>
+    </form>
+    <script>
+
+        login.action += document.location.search; // action plus the query string so info won't be lost from the intitial display page
+    </script>
+</body>
+
+
+<h2>Register Below!</h2> <!-- Text between new user and login button -->
+
+<body>
+
+    <input type="button" name="newuser" value="New User"
+        onclick="window.location='./register.html' + document.location.search;" class='register'>
+    <!-- New User button -->
+
+
+</body>
+
+</html>

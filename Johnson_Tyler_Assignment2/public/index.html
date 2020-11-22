@@ -1,5 +1,5 @@
 <!-- Import products from file -->
-<script src="products_data.js" type="text/javascript"></script>
+<script src="product_data.js" type="text/javascript"></script>
 <script>
     //Referenced from assignment 1 examples
     function isNonNegInt(q, return_errors = false) {
@@ -19,7 +19,7 @@
     window.onload = function () {
         let params = (new URL(document.location)).searchParams; // get the query string which has the form data//
         // form was submitted so check that quantities are valid then redirect to invoice if ok//
-        if (params.has('submitPurchase')) {
+        if (params.has('purchase_submit_button')) {
             has_errors = false; // assume quantities are valid//
             total_qty = 0; // need to check if something was selected so we will look if the total > 0//
             //For every product in the array, write the product number, display its image and name, and list price//
@@ -66,7 +66,7 @@
 </head>
 
 <body>
-    <form name="form" action="process_purchase" method="POST">   
+    <form name="form" action="purchase_submit_button" method="POST">   
 
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
@@ -92,7 +92,7 @@
                 </li>
 
                 <li class="nav-item ml-auto">
-                    <input type="submit" value="Purchase" name="submitPurchase">
+                    <input type="submit" value="Purchase" name="purchase_submit_button">
                 </li>
             </ul>
         </div>
