@@ -7,7 +7,7 @@
   padding-left: 1rem;
 }
 
-.nav-item {
+.nav-item, .new-user {
   font-weight: 900;
   font-size: 14px;
   letter-spacing: .075rem;
@@ -42,3 +42,26 @@
   max-width: 40%;
 }
 
+/* CSS for log-in */
+.log-in-picture {
+  width: 50%;
+  height: auto;
+  padding: 2rem;
+}
+
+.log-in {
+  padding: 1rem;
+  font-size: 55px;
+  letter-spacing: .075rem;
+  font-weight: 500;
+}
+
+.please-log-in {
+  letter-spacing: .075rem;
+  padding: 1.1rem;
+}
+
+.log-in-button {
+  font-size: 20px;
+  margin: 1rem;
+}

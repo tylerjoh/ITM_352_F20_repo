@@ -20,39 +20,6 @@
 
     console.log(quantities);
 
-    // function generate_item_rows(product_quantities_array) {
-    //     //Prints out row of products with quantities, product_quantities_array
-    //     for (i = 0; i < product_quantities_array.length; i++) {
-    //         qty = product_quantities_array[i];
-    //         errors = isNonNegIntString(qty, true);
-    //         if (qty == 0) {
-    //             continue;
-    //         }
-    //         if (errors.length == 0) {
-    //             extended_price = qty * products[i].price;
-    //             subtotal += extended_price;
-    //         } else {
-    //             qty = `<span style="color:red;">${qty}<br>${errors.join("<br>")}</span>`;
-    //         }
-    //         document.write(`
-    //           <tr>
-    //             <td width="43%">${products[i].model}</td>
-    //             <td align="center" width="11%">${qty}</td>
-    //             <td width="13%">\$${products[i].price}</td>
-    //             <td width="54%">\$${extended_price}</td>
-    //           </tr>`);
-    //     }
-    // }
-
-    // function isNonNegIntString(string_to_check, returnErrors = false) {
-    //     // this function returns true if string_to_check is a non negative integer. If returnErrorstrue it will return the array of reasons it is not a non-negative integer
-    //     errors = []; // assume no errors at first
-    //     if (Number(string_to_check) != string_to_check) errors.push(' is not a number! :('); // Check if string is a number value
-    //     if (string_to_check < 0) errors.push('is a negative value! :('); // Check if it is non-negative
-    //     if (parseInt(string_to_check) != string_to_check) errors.push(' is not an integer! :('); // Check that it is an integer
-    //     return returnErrors ? errors : ((errors.length > 0) ? false : true);
-    // }
-
 </script>
 
 

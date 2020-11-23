@@ -1,1 +1,32 @@
-{"dport":{"name":"Dan_Port","password":"portspassword","email":"dport@hawaii.edu"},"kazman":{"name":"Rick_Kazman","password":"kazmanpassword","email":"kazman@hawaii.edu"},"itm352":{"name":"ITM_352","password":"grader","email":"itm352@hawaii.edu"},"newuser":{"name":"Joe_Schmo","password":"pass","email":"joe@joe.com"},"Biff":{"name":"Biff","password":"asdf","email":"biff@boff.com"},"tylerjoh":{"name":"tylerjoh","password":"trombone","email":"tylerj001@gmail.com"}}
+{
+    "dport": {
+        "name": "Dan_Port",
+        "password": "portspassword",
+        "email": "dport@hawaii.edu"
+    },
+    "kazman": {
+        "name": "Rick_Kazman",
+        "password": "kazmanpassword",
+        "email": "kazman@hawaii.edu"
+    },
+    "itm352": {
+        "name": "ITM352",
+        "password": "grader",
+        "email": "itm352@hawaii.edu"
+    },
+    "newuser": {
+        "name": "Joe_Schmo",
+        "password": "pass",
+        "email": "joe@joe.com"
+    },
+    "Biff": {
+        "name": "Biff",
+        "password": "asdf",
+        "email": "biff@boff.com"
+    },
+    "tylerjoh": {
+        "name": "tylerjoh",
+        "password": "trombone",
+        "email": "tylerj001@gmail.com"
+    }
+}
