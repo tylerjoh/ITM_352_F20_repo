@@ -6,7 +6,6 @@
     let params = (new URL(document.location)).searchParams; //takes data from query called purchase_submit_button, if it has it then it looks for the quantities
         var quantities = []; 
         // processing the invoice to create the form from the data entered
-    let quantities = [];
     if (params.has('purchase_submit_button')) { //loops that pulls information
         // looping over every product
         for (i = 0; i < products.length; i++) {
@@ -17,13 +16,12 @@
         }
 
     } else {
-        window.location.href = './index.html';
-    }
-    if (params.has('username')) {
-        var name = params.get('name');
-        var username = params.get('username');
-    }
-
+          window.location.href = './index.html';
+        }
+        if (params.has('username')) {
+          var name = params.get('name');
+          var username = params.get('username');
+        }
     console.log(quantities);
 
 </script>
@@ -50,11 +48,13 @@
     <script>
         if (name != 'undefined' && name != '') {
           document.write (`
-            <h3 align="center"> Thank you ${name} for purchasing from Lululemon</h3>`)
+            <h3 align="center"> Thank you ${name} for purchasing from Lululemon
+          `)
         } else {
-          document.write (`<h3 align="center"> Thank you ${username} for purchasing from Lululemon</h3>`)
+          document.write (` <h3 align="center"> Thank you ${username} for purchasing from Lululemon
+          `)
         }
-    </script>
+      </script>
     <div class="container">
         <div class="row">
             <div class="col-12 justify-content-center">

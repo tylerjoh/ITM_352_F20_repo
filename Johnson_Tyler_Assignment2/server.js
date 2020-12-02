@@ -48,7 +48,7 @@ app.post("/purchase_submit_button", function (request, response) {
       response.redirect("./login.html?" + stringified); //changed from ./invoice to login so it goes there
       return; //stops the function
     }
-    else { response.send('Enter a valid quantity!') }
+    else { response.redirect("./index.html") }
   }
 });
 
@@ -172,16 +172,16 @@ app.post("/purchase_submit_button", function (request, response) {
 
       qty = POST[`quantity${i}`];
       hasquantities = hasquantities || qty > 0; // If its value bigger than 0 then it is good//
-      hasvalidquantities = hasvalidquantities && isNonNegInt(qty);    // if it is both a quantity over 0 and is valid//     
+      hasvalidquantities = hasvalidquantities && isNonNegInt(qty);    // if it is both a quantity over 0 sand is valid//     
     }
     // if all quantities are valid, it will generate the invoice// 
     const stringified = queryString.stringify(POST);
     if (hasvalidquantities && hasquantities) {
       response.redirect("./login.html?" + stringified); // using the login.html and all the data that is input//
     }
-    else { response.send('Enter a valid quantity!') }
+    else { response.redirect("./index.html") }
   }
-});
+})
 
 function isNonNegInt(q, returnErrors = false) {
   errors = []; // assume that quantity data is valid 
