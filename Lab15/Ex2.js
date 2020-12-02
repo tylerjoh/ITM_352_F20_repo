@@ -7,7 +7,7 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 
 app.use(cookieParser());
-app.use(session({secret: "ITM352 rocks!"}));
+app.use(session({ secret: "ITM352 rocks!", saveUninitialized: false, resave: false }));
 
 app.use(myParser.urlencoded({ extended: true }));
 
@@ -18,16 +18,33 @@ if (fs.existsSync(filename)) {
     //console.log("Success! We got: " + data);
 
     user_data = JSON.parse(data);
-    //console.log("User_data=", user_data);
+    console.log("User_data=", user_data.itm352.password);
 } else {
     console.log("Sorry can't read file " + filename);
     exit();
 }
 
+app.get('/', function (req, res) {
+    if (req.session.page_views) {
+        req.session.page_views++;
+        console.log(req.session);
+        if (req.session.username != 'undefined') {
+            user = req.session.username;
+        }
+        else {
+            user = "";
+        }
+        res.send(`Welcome back ${user}. This is visit # ${req.session.page_views}`);
+    } else {
+        req.session.page_views = 1;
+        res.send("Welcome to this page for the first time!");
+    }
+});
+
 app.get("/set_cookie", function (request, response) {
     // Set a cookie called myname to be my name
-    response.cookie('myname', 'Rick Kazman', {maxAge: 10000}).send('cookie set');
-}); 
+    response.cookie('myname', 'Rick Kazman', { maxAge: 10000 }).send('cookie set');
+});
 
 app.get("/use_cookie", function (request, response) {
     // Use the cookie, if it has been set
@@ -36,7 +53,12 @@ app.get("/use_cookie", function (request, response) {
         output = `Welcome to the Use Cookie page ${request.cookies.myname}`;
     }
     response.send(output);
-}); 
+});
+
+app.get("/use_session", function (request, response) {
+    // Print the value of the session ID
+    response.send(`Welcome.  Your session ID is: ${request.session.id}`);
+});
 
 app.get("/login", function (request, response) {
     // Give a simple login form
@@ -57,11 +79,25 @@ app.post("/login", function (request, response) {
     console.log("Got a POST login request");
     POST = request.body;
     user_name_from_form = POST["username"];
+    password_from_form = POST["password"];
     console.log("User name from form=" + user_name_from_form);
     if (user_data[user_name_from_form] != undefined) {
-        response.send(`<H3> User ${POST["username"]} logged in`);
-    } else {
-        response.send(`Sorry Charlie!`);
+        password_on_file = user_data[user_name_from_form].password;
+        if (password_from_form == password_on_file) {
+            // Good login
+            request.session.username = user_name_from_form;
+            if (typeof request.session.last_login != 'undefined') {
+                var msg = `You last logged in at ${request.session.last_login}`;
+                var now = new Date();
+            } else {
+                var msg = '';
+                var now = 'first visit!';
+            }
+            request.session.last_login = now;
+            response.cookie('username', user_name_from_form).send(`${msg}<BR>${user_name_from_form} logged in at ${now}`);
+        } else {
+            response.send(`Sorry Charlie!`);
+        }
     }
 });
 
