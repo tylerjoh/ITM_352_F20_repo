@@ -2,20 +2,22 @@
 <script src="./product_data.js" type="text/javascript"></script>
 
 <script>
-    let params = (new URL(document.location)).searchParams;
+    // referenced from assingment 1 examples and invoice 1
+    let params = (new URL(document.location)).searchParams; //takes data from query called purchase_submit_button, if it has it then it looks for the quantities
+        var quantities = []; 
+        // processing the invoice to create the form from the data entered
     let quantities = [];
-    if (params.has('purchase_submit_button')) { 
+    if (params.has('purchase_submit_button')) { //loops that pulls information
         // looping over every product
         for (i = 0; i < products.length; i++) {
-            // checking if ...
-            if (params.has(`quantity${i}`)) {
+            if (params.has(`quantity${i}`)) { 
                 single_item = params.get(`quantity${i}`);
                 quantities[i] = single_item;
             }
         }
 
     } else {
-        document.write('Please enter a valid quantity!');
+        document.write('Please enter a valid quantity!'); //Alert sent when invlaid quantity is inputted
     }
 
     console.log(quantities);
@@ -39,6 +41,7 @@
     
 </head>
 
+<!-- Start of invoice -->
 <body>
     <div class="container">
         <div class="row">

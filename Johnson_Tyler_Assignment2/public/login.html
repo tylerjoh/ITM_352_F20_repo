@@ -7,7 +7,7 @@
     <script>
         let params = (new URL(document.location)).searchParams;
 
-        window.onload = function () { //Create alert for invalid usernames/passwords
+        window.onload = function () { //Alert for invalid usernames/passwords
             if (params.has('LogError')) {
                 alert('Invalid Username or Passowrd');
             }
