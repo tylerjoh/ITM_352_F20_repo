@@ -17,7 +17,11 @@
         }
 
     } else {
-        document.write('Please enter a valid quantity!'); //Alert sent when invlaid quantity is inputted
+        window.location.href = './index.html';
+    }
+    if (params.has('username')) {
+        var name = params.get('name');
+        var username = params.get('username');
     }
 
     console.log(quantities);
@@ -43,6 +47,14 @@
 
 <!-- Start of invoice -->
 <body>
+    <script>
+        if (name != 'undefined' && name != '') {
+          document.write (`
+            <h3 align="center"> Thank you ${name} for purchasing from Lululemon</h3>`)
+        } else {
+          document.write (`<h3 align="center"> Thank you ${username} for purchasing from Lululemon</h3>`)
+        }
+    </script>
     <div class="container">
         <div class="row">
             <div class="col-12 justify-content-center">
