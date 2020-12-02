@@ -3,7 +3,7 @@ var app = express();
 var myParser = require("body-parser");
 var fs = require('fs');
 const { exit } = require('process');
-var queryString = require(ʻquery-stringʻ);
+var queryString = require('querystring');
 
 
 app.use(myParser.urlencoded({ extended: true }));
