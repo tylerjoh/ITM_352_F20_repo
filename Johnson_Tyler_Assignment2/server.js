@@ -146,7 +146,7 @@ app.post("/process_register", function (req, res) {
     users_reg_data[username].email = POST['email'];
     data = JSON.stringify(users_reg_data); // change to 'userS'
     fs.writeFileSync(filename, data, "utf-8");
-    res.redirect('./invoice.html?' + queryString.stringify(req.query))
+    res.redirect('./invoice.html?' + queryString.stringify(req.query) + queryString.stringify(req.body));
   }
   //directs user to registration page if there are errrors
   if (errors.length > 0) {
