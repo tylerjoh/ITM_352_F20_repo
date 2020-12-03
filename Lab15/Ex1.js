@@ -26,7 +26,7 @@ if (fs.existsSync(filename)) {
 
 app.get("/set_cookie", function (request, response) {
     // Set a cookie called myname to be my name
-    response.cookie('myname', 'Rick Kazman', {maxAge: 10000}).send('cookie set');
+    response.cookie('myname', 'Tyler Johnson', {maxAge: 10000}).send('cookie set');
 }); 
 
 app.get("/use_cookie", function (request, response) {
@@ -85,7 +85,7 @@ app.post("/register", function (request, response) {
     // process a simple register form
     POST = request.body;
     console.log("Got register POST");
-    if (POST["username"] != undefined && POST['password'] != undefined) {          // Validate user input
+    if (POST["username"] != undefined && POST['password'] != undefined) {    // Validate user input
         username = POST["username"];
         user_data[username] = {};
         user_data[username].name = username;
