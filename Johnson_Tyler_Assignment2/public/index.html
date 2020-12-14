@@ -15,7 +15,7 @@
         errs = isNonNegInt(theTextbox.value, true);
         if (errs.length == 0) errs = ['You want:']; //If there's no errors, replace "Quantity" with "You want:" text
         if (theTextbox.value.trim() == '') errs = ['Quantity'];
-        document.getElementById(theTextbox.name + '_label').innerHTML = errs.join(", "); // Show errors if there's invalid quantities
+        document.getElementById(theTextbox.name + '_label').innerHTML = errs.join(", "); // Show errors if there's invalid quantitiesf
     }
     window.onload = function () {
         let params = (new URL(document.location)).searchParams; // get the query string which has the form data
