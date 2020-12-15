@@ -43,10 +43,10 @@ app.post("/purchase_submit_button", function (request, response) {
       hasquantities = hasquantities || qty > 0; // If its value is larger than 0 then it is good//
       hasvalidquantities = hasvalidquantities && isNonNegInt(qty);    // if it is both a quantity over 0 and is valid//     
     }
-    // if all quantities are valid, generate the invoice// 
+    // if all quantities are valid, login/register// 
     const stringified = queryString.stringify(POST);
     if (hasvalidquantities && hasquantities) {
-      response.redirect("./login.html?" + stringified); //changed from ./invoice to login so it goes there
+      response.redirect("./login.html?" + stringified); //direct to login
       return; //stops the function
     }
     else { response.redirect("./index.html" + stringified) }
@@ -63,8 +63,6 @@ function isNonNegInt(q, returnErrors = false) {
   return returnErrors ? errors : (errors.length == 0);
 }
 
-
-
 // login stuff starts here , add more comments and reference// 
 app.post("/process_login", function (req, res) {
   var LogError = [];
@@ -76,7 +74,7 @@ app.post("/process_login", function (req, res) {
       req.query.username = the_username;
       console.log(users_reg_data[req.query.username].name);
       req.query.name = users_reg_data[req.query.username].name
-      res.redirect('/invoice.html?' + queryString.stringify(req.query));
+      res.redirect('/cart.html?' + queryString.stringify(req.query));
       return;
       //Redirect them to invoice here if they logged in correctly//
     } else {

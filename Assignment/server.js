@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var myParser = require("body-parser");
 var session = require('express-session');
-var products_data = require('./products.json');
+var products_data = require('products.json');
 
 app.use(myParser.urlencoded({ extended: true }));
 app.use(session({secret: "ITM352 rocks!"}));

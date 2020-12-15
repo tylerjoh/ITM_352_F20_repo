@@ -1,6 +1,12 @@
 <!-- Import products_pants from file -->
 <script src="product_data_pants.js" type="text/javascript"></script>
 <script>
+    var products_data;
+loadJSON('get_products_data', function(response) {
+     // Parsing JSON string into object
+     products_data = JSON.parse(response);
+});
+var this_product_key = ''
     //Referenced from assignment 1 examples
     function isNonNegInt(q, return_errors = false) {
         errors = []; // will assume there are no errors
@@ -91,7 +97,7 @@
                         <a class="nav-link" href="#">|</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">MEN</a>
+                        <a class="nav-link" href="index.html">HOME</a>
                     </li>
 
                     <li class="nav-item">
