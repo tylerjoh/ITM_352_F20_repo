@@ -14,6 +14,10 @@ function loadJSON(service, callback) {
         }
     };
     xobj.send(null);
+    app.use(session({
+            resave: true,
+            saveUninitialized: true
+        }));
 }
 
 // This function makes a navigation bar from a products_data object

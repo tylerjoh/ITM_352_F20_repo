@@ -1,5 +1,5 @@
 <!-- Import products_medium from file -->
-<script src="product_data_medium.js" type="text/javascript"></script>
+<script src="product_data_acc.js" type="text/javascript"></script>
 <script>
     //Referenced from assignment 1 examples
     function isNonNegInt(q, return_errors = false) {
@@ -24,7 +24,7 @@
             has_errors = false; // assume quantities are valid//
             total_qty = 0; // need to check if something was selected so we will look if the total > 0
             //For every product in the array, write the product number, display its image and name, and list price
-            for (i = 0; i < products_medium.length; i++) {
+            for (i = 0; i < acc.length; i++) {
                 if (params.has(`quantity${i}`)) {
                     a_qty = params.get(`quantity${i}`);
                     // make textboxes sticky in case of invalid data
@@ -67,6 +67,7 @@
 </head>
 
 <body>
+
     <form name="form" action="purchase_submit_button" method="POST">
 
         <!-- Navigation Bar -->
@@ -80,7 +81,7 @@
                         <a class="nav-link" href="#">Tyler's Lululemon Store :)</a>
                     </li>
 
-                   
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="#">|</a>
                     </li>
@@ -95,16 +96,16 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="index_small.html">SMALL</a>
+                        <a class="nav-link" href="index_shirts.html">SHIRTS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index_medium.html">MEDIUM</a>
+                        <a class="nav-link" href="index_pants.html">PANTS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index_large.html">LARGE</a>
+                        <a class="nav-link" href="index_acc.html">ACCESSORIES</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index_xlarge.html">X-LARGE</a>
+                        <a class="nav-link" href="index_bags.html">BAGS</a>
                     </li>
 
 
@@ -119,21 +120,22 @@
 
         <div class="container">
             <div class="row justify-content-center text-center">
-                <div class="log-in">LULULEMON MEDIUM</div>
+                <div class="log-in">LULULEMON ACCESSORIES</div>
             </div>
             <div class="row">
 
                 <script>
                     //For loop that generates the products on the display page
-                    for (i = 0; i < products_medium.length; i++) {
+                    for (i = 0; i < acc.length; i++) {
                         // console.log(products[i]);
                         document.write(`
                             <div class="card col-3">
-                                <img class="card-img-top" src="./imgs/${products_medium[i].image}" alt="Card image cap">
+                                <img class="card-img-top" src="./imgs/${acc[i].image}" alt="Card image cap">
                                     <div class="card-body">
                                         
-                                        <span class="card-text float-left"> ${products_medium[i].model}${products_medium[i].size}</span>
-                                        <span class="price float-right">$${products_medium[i].price}</span>
+                                        <span class="card-text float-left"> ${acc[i].model}
+                                            <br> ${acc[i].color}</span>
+                                        <span class="price float-right">$${acc[i].price}</span>
                                     </div>         
                                     <label id="quantity${i}_label"}">Quantity</label>
                                     <input type="text" placeholder="0" name="quantity${i}" 

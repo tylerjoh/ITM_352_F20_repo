@@ -5,7 +5,7 @@
         var total = 0;
         loadJSON('get_products_data', function (response) {
             // Parsing JSON string into object
-            products_data = JSON.parse(response);
+            var products_data = JSON.parse(response);
         });
         loadJSON('get_cart', function (response) {
             // Parsing JSON string into object
