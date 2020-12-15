@@ -1,7 +1,7 @@
 // Product Data
 shirts = [
     {
-        "model": "Metal Vent 1.0",
+        "model": "Metal Vent Tech Short Sleeve 1.0",
         "color": "Olive",
         "price": 78.00,
         "image": "metal1.png"
@@ -19,7 +19,7 @@ shirts = [
         "image": "metal3.png"
     },
     {
-        "model": "Metal Vent Tech Short Sleeve",
+        "model": "Metal Vent Tech Short Sleeve 1.0",
         "color": "Graphite",
         "price": 78.00,
         "image": "metal4.png"
