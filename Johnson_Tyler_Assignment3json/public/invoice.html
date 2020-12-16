@@ -1,0 +1,195 @@
+<script>
+
+    // Used code from Lab12 to get data from quantity textbox
+    let params = (new URL(document.location)).searchParams;
+
+    // If there is a user logged in
+    var cookieUser = getCookie('loggeduser');
+    if (document.cookie != '') {
+        alert(`Hello ${cookieUser}. Thank you for your purchase.`);
+        document.write(`<a style='float: right;' href='./logout'>Logout ${cookieUser}</a>`);
+    } else { // If there is nobody logged in, direct to login page
+        alert('you must login or register first');
+        window.location = `./login.html${document.location.search}`;
+        window.stop;
+    }
+
+    // Gets all the information from server to read in your cart
+    var products_data;
+    loadJSON('get_products_data', function (response) {
+        // Parsing JSON string into object
+        products_data = JSON.parse(response);
+    });;
+    loadJSON('get_cart', function (response) {
+        // Parsing JSON string into object
+        shopping_cart = JSON.parse(response);
+    });
+
+    var quantities = [];
+    // Borrowed from example from Assignment1, modified using code from A3 examples to get shopping cart info
+    if (params.has('checkout')) {
+        for (product_key in products_data) {
+            for (i = 0; i < products_data[product_key].length; i++) {
+                if (typeof shopping_cart[product_key] == 'undefined') continue;
+                a_qty = shopping_cart[product_key][i];
+                quantities[i] = a_qty;
+            }
+        }
+    }
+    console.log(quantities);
+</script>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zen Noods Receipt</title>
+
+    <style>
+        body {
+            text-align: center;
+            background-image: url(./images/noodles.png);
+        }
+
+        table {
+            margin-left: auto;
+            margin-right: auto;
+            border: solid black;
+            background-color: lightblue;
+        }
+
+        th {
+            font-size: x-large;
+        }
+
+        td {
+            height: 30px;
+            padding-left: 10px;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: red;
+            color: white;
+            text-align: center;
+            font-size: 30px;
+        }
+
+        h3 {
+            color: white;
+            font-size: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Zen Noods Receipt</h1>
+    </header>
+    <table border="2">
+        <tbody>
+            <tr id="invoice">
+                <th style="text-align: center;" width="20%">Item</th>
+                <th style="text-align: center;" width="11%">Quantity</th>
+                <th style="text-align: center;" width="13%">Price</th>
+                <th style="text-align: center;" width="54%">Extended Price</th>
+            </tr>
+
+            <script>
+                // Defining subtotal; same table as old SmartPhoneProducts.
+                // Using code from A3 example, modified to work with multiple products
+                subTotal = 0;
+                for (product_key in products_data) {
+                    for (i = 0; i < products_data[product_key].length; i++) {
+                        if (typeof shopping_cart[product_key] == 'undefined') continue;
+                        qty = shopping_cart[product_key][i];
+                        if (qty > 0) {
+                            // Product rows
+                            extended_price = quantities[i] * products_data[product_key][i].price
+                            subTotal += extended_price;
+                            document.write(`
+                        <tr>
+                            <td width="43%">${products_data[product_key][i].item}</td>
+                            <td align="center" width="11%">${qty}</td>
+                            <td width="13%">\$${products_data[product_key][i].price.toFixed(2)}</td>
+                            <td width="54%">\$${extended_price.toFixed(2)}</td>
+                        </tr>`);
+                        }
+                    }
+                }
+
+                // Tax rate, similar to Invoice WOD
+                var salesTax = 0.0471;
+                var tax = subTotal * salesTax;
+
+                // Shipping calculation
+                if (subTotal > 0 && subTotal <= 100) {
+                    shipping = 10;  // If the subtotal is equal or under 100, shipping costs $10
+                } else {
+                    shipping = 0;   // If the subtotal is over 100, no shipping
+                }
+
+                // Grand total, similar to Invoice WOD
+                var grandTotal = subTotal + tax + shipping;
+            </script>
+
+            <tr>
+                <td colspan="3" width="100%">&nbsp;</td>
+            </tr>
+            <tr>
+                <td style="text-align: center;" colspan="3" width="67%">Sub-total</td>
+                <td width="54%">$
+                    <script>
+                        document.write(subTotal.toFixed(2));
+                    </script>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: center;" colspan="3" width="67%"><span>Tax @
+                        <script>document.write(salesTax * 100)</script>%
+                    </span></td>
+                <td width="54%">$
+                    <script>
+                        document.write(tax.toFixed(2));
+                    </script>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: center;" colspan="3" width="67%"><span>Shipping</span></td>
+                <td width="54%">$
+                    <script>
+                        document.write(shipping);
+                    </script>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: center;" colspan="3" width="67%"><strong>Total</strong></td>
+                <td width="54%"><strong>$
+                        <script>
+                            document.write(grandTotal.toFixed(2));
+                        </script>
+                    </strong></td>
+            </tr>
+            <td style="text-align: left;" colspan="4" width="121%"><strong>
+                    SHIPPING POLICY: <br>
+                    Subtotals $100 and less: $10. <br>
+                    Subtotals over $100: Free. <br>
+                </strong></td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+<footer>
+    <br>
+    <script>document.write(`<strong>Thank you ${cookieUser} for your purchase!</strong> <br><br>
+    <form name=email action="/email" method="GET">
+    <input type="submit" style='font-size: 20px;' value="Click here to send an email of your invoice!">
+    </form>`);
+    </script>
+</footer>
+
+</html>

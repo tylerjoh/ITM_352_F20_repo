@@ -1,8 +1,5 @@
-// Product Data
-
-products = [
-
-    acc = [
+{
+    "acc": [
         {
             "model": "The Reversible (Big) Mat 5mm",
             "color": "Blue Marble",
@@ -28,9 +25,7 @@ products = [
             "image": "acc4.png"
         }
     ],
-
-    bags = [
-
+    "bags": [
         {
             "model": "More Miles Pack39L",
             "color": "Black",
@@ -56,8 +51,7 @@ products = [
             "image": "bag1.png"
         }
     ],
-
-    pants = [
+    "pants": [
         {
             "model": "T.H.E Short",
             "color": "Black",
@@ -83,8 +77,7 @@ products = [
             "image": "jogger2.png"
         }
     ],
-
-    shirts = [
+    "shirts": [
         {
             "model": "Metal Vent 1.0",
             "color": "Olive",
@@ -110,10 +103,4 @@ products = [
             "image": "metal4.png"
         }
     ]
-
-];
-
-
-if (typeof module != 'undefined') { //if the type of the module is defined
-    module.exports.products = products; //export the product_data
 }
