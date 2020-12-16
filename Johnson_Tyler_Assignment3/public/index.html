@@ -6,7 +6,7 @@ loadJSON('get_products_data', function(response) {
      // Parsing JSON string into object
      products_data = JSON.parse(response);
 });
-var this_product_key = ''
+var this_product_key = params.get('products_key');
     //Referenced from assignment 1 examples
     function isNonNegInt(q, return_errors = false) {
         errors = []; // will assume there are no errors

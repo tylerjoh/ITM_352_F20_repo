@@ -13,6 +13,35 @@ var session = require('express-session');
 // So it'll load querystring//
 var filename = 'user_data.json'; // new//
 var fs = require('fs'); //Load file system//
+
+app.use(myParser.urlencoded({ extended: true }));
+app.use(session({secret: "ITM352 rocks!"}));
+
+app.all('*', function (request, response, next) {
+  console.log(`Got a ${request.method} to path ${request.path}`);
+  // need to initialize an object to store the cart in the session. We do it when there is any request so that we don't have to check it exists
+  // anytime it's used
+  if(typeof request.session.cart == 'undefined') { request.session.cart = {}; } 
+  next();
+});
+
+app.post("/get_products_data", function (request, response) {
+  response.json(products_data);
+});
+
+app.get("/add_to_cart", function (request, response) {
+  var products_key = request.query['products_key']; // get the product key sent from the form post
+  var quantities = request.query['quantities'].map(Number); // Get quantities from the form post and convert strings from form post to numbers
+  request.session.cart[products_key] = quantities; // store the quantities array in the session cart object with the same products_key. 
+  response.redirect('./cart.html');
+});
+
+app.get("/get_cart", function (request, response) {
+  response.json(request.session.cart);
+});
+
+
+
 //added just now
 if (fs.existsSync(filename)) {
   stats = fs.statSync(filename) //gets stats from file
@@ -165,6 +194,7 @@ app.post("/process_register", function (req, res) {
     res.redirect('register.html?' + queryString.stringify(req.query))
   }
 });
+
 // Generates invoice
 app.post("/purchase_submit_button", function (request, response) {
   let POST = request.body; // data would be packaged in the body//
