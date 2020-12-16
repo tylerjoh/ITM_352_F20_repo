@@ -1,0 +1,93 @@
+<!-- Code used from Assignment 3 Code examples -->
+
+<head>
+    <script src="product_data.js"></script>
+   
+</head>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Tyler Johnson">
+    <meta name="description" content="Displays products">
+    <!-- Add responsive design on smaller screens -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Import Bootstrap CSS library -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- Own CSS style -->
+    <link rel="stylesheet" href="css/style.css">
+    <title>Lululemon Store</title>
+</head>
+
+<body>
+
+    <form name="form" action="purchase_submit_button" method="POST">
+
+        <!-- Navigation Bar -->
+        <nav class="navbar navbar-expand-sm navbar-light bg-light">
+            <a class="navbar-brand" href="#">
+                <img src="./imgs/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            </a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Tyler's Lululemon Store :)</a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">|</a>
+                    </li>
+                    <li class="nav-item ml-auto">
+                        <a class="nav-link" href="#">ITM 352</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">|</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">HOME</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index_shirts.html">SHIRTS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index_pants.html">PANTS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index_acc.html">ACCESSORIES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index_bags.html">BAGS</a>
+                    </li>
+
+
+
+                    <li class="nav-item ml-auto">
+                        <input type="submit" value="Purchase" name="purchase_submit_button">
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content Of Page -->
+
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="log-in">
+
+                    <head>
+                        <script src="product_data.js"></script>
+                        
+                    </head>
+                    <h2>You have <span id="cart_total">0</span> items in your shopping cart</h2>
+                    
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>
