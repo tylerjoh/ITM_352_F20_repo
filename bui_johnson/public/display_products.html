@@ -1,6 +1,37 @@
-<script>
-    //Referenced from assignment 1 examples
-    function isNonNegInt(q, return_errors = false) {
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Tyler Johnson">
+    <meta name="description" content="Displays products">
+    <!-- Add responsive design on smaller screens -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Import Bootstrap CSS library -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- Own CSS style -->
+    <link rel="stylesheet" href="css/style.css">
+    <title>Lululemon Store</title>
+
+    <script src="./functions.js"></script>
+    <script>
+
+
+        // get the query string
+        let params = (new URL(document.location)).searchParams;
+        if (params.has('products_key')) {
+            var products_key = params.get('products_key');
+        } else {
+            document.write('no products key in query string');
+            document.stop;
+        }
+
+        var products_data;
+        loadJSON('get_products_data', function (response) {
+            // Parsing JSON string into object
+            products_data = JSON.parse(response);
+        });
+ //Referenced from assignment 1 examples
+ function isNonNegInt(q, return_errors = false) {
         errors = []; // will assume there are no errors
         if (q == '') q = 0; // handle blank inputs as if they are 0
         if (Number(q) != q) errors.push('<font color="red">Not a number! :(</font>'); // Check if string is a number value
@@ -45,38 +76,7 @@
             }
         }
     }
-</script>
-
-
-<head>
-    <meta charset="utf-8">
-    <meta name="author" content="Tyler Johnson">
-    <meta name="description" content="Displays products">
-    <!-- Add responsive design on smaller screens -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Import Bootstrap CSS library -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <!-- Own CSS style -->
-    <link rel="stylesheet" href="css/style.css">
-    <title>Lululemon Store</title>
-
-    <script src="./functions.js"></script>
-    <script>
-
-        // get the query string
-        let params = (new URL(document.location)).searchParams;
-        if (params.has('products_key')) {
-            var products_key = params.get('products_key');
-        } else {
-            document.write('no products key in query string');
-            document.stop;
-        }
-
-        var products_data;
-        loadJSON('get_products_data', function (response) {
-            // Parsing JSON string into object
-            products_data = JSON.parse(response);
-        });
+        
     </script>
 </head>
 <center>
