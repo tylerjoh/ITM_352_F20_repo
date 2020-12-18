@@ -1,11 +1,7 @@
 <!-- Import products_medium from file -->
 <script src="./functions.js" type="text/javascript"></script>
 <script>
-    var products_data;
-loadJSON('get_products_data', function(response) {
-     // Parsing JSON string into object
-     products_data = JSON.parse(response);
-});
+
 var this_product_key = params.get('products_key');
     //Referenced from assignment 1 examples
     function isNonNegInt(q, return_errors = false) {
