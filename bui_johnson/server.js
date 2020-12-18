@@ -10,10 +10,12 @@ var fs = require('fs');
 var qs = require('querystring');
 var session = require('express-session');
 const { response, query } = require('express');
+var cookieParser = require("cookie-parser"); //set variable to bring in library
+
 
 var input_quantities = []; // For users that inputted quantities for products
 
-
+app.use(cookieParser());
 
 app.use(myParser.urlencoded({ extended: true }));
 app.use(session({secret: "ITM352 rocks!"}));
@@ -44,7 +46,9 @@ app.get("/get_cart", function (request, response) {
     response.json(request.session.cart);
 });
 
-
+app.post("/", function (request, response) {
+    response.cookie('cart', request.body).redirect("./cart.html"); //sets cookie to have key of “cart” and value of the request which would be the data passed in from the post request
+});
 
 
 

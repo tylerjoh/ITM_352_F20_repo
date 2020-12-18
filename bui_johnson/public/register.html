@@ -79,9 +79,6 @@
                 <input class="log-in-button" type="submit" value="Register" id="submit">
             </form>
             <script>
-                if (request.session.username) {
-                    str += ` value=${request.session.username}`;
-                }
                 Register.action += document.location.search; //saves the query string from the products page for the invoice
             </script>
         </div>

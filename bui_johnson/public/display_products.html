@@ -1,5 +1,3 @@
-
-
 <head>
     <meta charset="utf-8">
     <meta name="author" content="Tyler Johnson">
@@ -80,21 +78,32 @@
     </script>
 </head>
 <center>
+    
+    <FORM action="/" method="POST">
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
         <a class="navbar-brand" href="#">
             <img src="./imgs/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
         </a>
+        
+        <center>
+            <script> nav_bar(products_key, products_data);</script>
+        </center>
         <div class="collapse navbar-collapse">
+            
             <ul class="navbar-nav">
-                <li class="nav-item ml-auto">
-                    <input type="submit" value="Purchase" name="purchase_submit_button">
-                </li>
-                <li class="nav-item ml-auto" href="#">
-                    <INPUT TYPE="SUBMIT"  name="Submit" value="Add to Cart">
-                    </FORM>
-                
-    <script> nav_bar(products_key, products_data);</script>
+                 
+                <li class="nav-item ml-auto"> 
+                                     
+                    <INPUT TYPE="SUBMIT" name="add_to_cart" value="Add to Cart">
+                    
+                    </FORM> 
+                    <div class="post">  
+                        <h2> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Marcus and Tyler's Lululemon Store :)</h2>
+                       </div>  
+                    
+
 </center>
+
 
 
 <div class="container">
@@ -134,10 +143,11 @@
                             <span class="card-text float-left"> ${products[i]['model']}
                                 <br> <p style="color:#8695A5">${products[i]['color']}</p></span>
                             <span class="price float-right">$${products[i]['price']}</span>
-                        </div>         
-                            <label id="products${i}_label"}>Quantity</label>
-                            <input type="text" placeholder="0" name="quantity${i}"conkeyup="checkQuantityTextbox(this);">
+                            </div>     
+                            <label id="quantity${i}_label"}>Quantity</label>
+                            <input type="text" placeholder="0" name="quantity${i}" onkeyup="checkQuantityTextbox(this);">
                             </div>
+                            
                             `;
                 }
                 order_str += `
