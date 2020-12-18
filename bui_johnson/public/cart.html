@@ -11,16 +11,19 @@
 
     <script>
         // Gets all the information from server to read in your cart
-        var products_data;
+        
         loadJSON('get_products_data', function (response) {
             // Parsing JSON string into object
             products_data = JSON.parse(response);
-        });;
+        });
+        var shopping_cart;
         loadJSON('get_cart', function (response) {
             // Parsing JSON string into object
             shopping_cart = JSON.parse(response);
         });
     </script>
+
+    
 
 </head>
 
@@ -47,19 +50,19 @@
         <script>
             subTotal = 0;
             // This prints out the user's cart information. Used code from Prof Port's example to base off the shopping cart code
-            for (product_key in products_data) {
-                for (i = 0; i < products_data[product_key].length; i++) {
-                    if (typeof shopping_cart[product_key] == 'undefined') continue;
-                    qty = shopping_cart[product_key][i];
+            for (products_key in products_data) {
+                for (i = 0; i < products_data[products_key].length; i++) {
+                    if (typeof shopping_cart[products_key] == 'undefined') continue;
+                    qty = shopping_cart[products_key][i];
                     if (qty > 0) {
                         // Calculate the extended total for the amount of each product ordered
-                        extended_price = qty * products_data[product_key][i].price;
+                        extended_price = qty * products_data[products_key][i].price;
                         subTotal += extended_price;
                         // Displaying the products chosen along with subtotals
                         document.write(`<section class="item">
-                                        <h2 id='orderedItem'>${qty} ${products_data[product_key][i].model} <input type='button' value="Remove item"></h2>
+                                        <h2 id='orderedItem'>${qty} ${products_data[products_key][i].model} <input type='button' value="Remove item"></h2>
                                         <p><strong>$${extended_price.toFixed(2)}</p></strong>
-                                        <img src=${products_data[product_key][i].image}>`);
+                                        <img src=${products_data[products_key][i].image}>`);
                     }
                 }
             }
