@@ -1,0 +1,58 @@
+<!-- Cart Page -->
+<!-- Referenced Dan Port's Assignment 3 Examples, as well as Stack Exchange and W3Schools -->
+
+<head>
+    <script src="./functions.js"></script>
+    <script>
+        var products_data;
+        loadJSON('get_products_data', function (response) {
+            // Parsing JSON string into object
+            products_data = JSON.parse(response);
+        });
+        loadJSON('get_cart', function (response) {
+            // Parsing JSON string into object
+            shopping_cart = JSON.parse(response);
+        });
+    </script>
+    <!-- Link for stylesheet -->
+    <link href="stylesheet.css" rel="stylesheet">
+</head>
+
+<h1>You have in your shopping cart:</h1>
+<table border>
+    <th>Quantity</th>
+    <th>Model</th>
+    <th>Color</th>
+    <th>Price</th>
+
+
+    <br>
+    <script>
+        for (product_key in products_data) {
+            for (i = 0; i < products_data[product_key].length; i++) {
+                if (typeof shopping_cart[product_key] == 'undefined') continue;
+                qty = shopping_cart[product_key][i];
+                if (qty > 0) {
+                    document.write(`<tr><td>${qty}</td><td>${products_data[product_key][i].model}</td>
+                        <td>${products_data[product_key][i].color}</td>
+                        <td>$${products_data[product_key][i].price}</td>
+
+                    `);
+                }
+            }
+        }
+    </script>
+</table>
+<br>
+<div>
+    <form action="/login.html" method="GET">
+        <strong><input type="submit" value="Purchase!" name="purchase_submit"></strong>
+    </form>
+
+</div>
+<div>
+    <form action="/display_products.html" method="GET">
+        <strong><input type="submit" value="Continue Shopping" name="/display_products.html"></strong>
+    </form>
+
+</div>

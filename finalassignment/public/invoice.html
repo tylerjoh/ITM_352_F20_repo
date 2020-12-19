@@ -1,0 +1,137 @@
+<!-- Invoice Page -->
+<!-- Referenced from Lab 14 and Invoice WODs, as well as Dan Port's Assignment 3 Example -->
+
+<head>
+  <script src="./functions.js"></script>
+  <script>
+    var products_data;
+    loadJSON('get_products_data', function (response) {
+      // Parsing JSON string into object
+      products_data = JSON.parse(response);
+    });
+    loadJSON('get_cart', function (response) {
+      // Parsing JSON string into object
+      shopping_cart = JSON.parse(response);
+    });
+    //nav_bar('', products_data);
+    let params = (new URL(document.location)).searchParams;
+
+    if (params.has('username')) {
+    }
+    else { //if the invoice page doesn't recieve username info, it will display a message that says please purchase/login before checkout and take the use to the products_display page.html page
+      alert('Please login before checkout');
+      window.location = 'login.html';
+      window.stop();
+    }
+  </script>
+  <!-- Link for stylesheet -->
+  <link href="stylesheet.css" rel="stylesheet">
+</head>
+
+<header>
+  <h1>Marcus and Tyler's Lululemon Store!! :)</h1>
+</header>
+
+<h1>
+  <script>document.write(`${params.get('username')}'s Invoice:`);</script>
+</h1>
+<table border="2">
+  <th>Quantity</th>
+  <th>Model</th>
+  <th>Price</th>
+  <th>Extended Price</th>
+
+  <br>
+  <script>
+    subtotal = 0;
+    for (product_key in products_data) {
+      for (i = 0; i < products_data[product_key].length; i++) {
+        if (typeof shopping_cart[product_key] == 'undefined') continue;
+        qty = shopping_cart[product_key][i];
+        if (qty > 0) {
+          extended_price = qty * products_data[product_key][i].price;
+          subtotal += extended_price;
+          document.write(`
+          <tr>
+            <td width="43%">${qty}</td>
+            <td align="center" width="11%">${products_data[product_key][i].model}</td>
+            <td width="13%">\$${products_data[product_key][i].price}</td>
+            <td width="54%">\$${extended_price}</td>
+          </tr>
+          `);
+        }
+      }
+    }
+    // Compute tax 
+    var tax_rate = 0.0575;
+    var tax = subtotal * tax_rate;
+    // Compute shipping
+    if (subtotal >= 100) {
+      var shipping = 0.05 * subtotal
+    }
+    else if (subtotal >= 50) {
+      var shipping = 5
+    }
+    else if (subtotal < 50) {
+      var shipping = 2
+    }
+    // Compute grand total 
+    var grandtotal = subtotal + tax + shipping;
+  </script>
+  <tr>
+    <td colspan="4" width="100%">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="3" width="67%">Sub-Total</td>
+    <td width="54%">$
+      <script>document.write(subtotal.toFixed(2));</script>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3" width="67%">Tax @
+      <script>document.write(tax_rate * 100);</script>%</span></td>
+    <td width="54%">$
+      <script>document.write(tax.toFixed(2));</script>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3" width="67%">Shipping</span></td>
+    <td width="54%">$
+      <script>document.write(shipping.toFixed(2));</script>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3" width="67%"><strong>Total</strong></td>
+    <td width="54%"><strong>$
+        <script>document.write(grandtotal.toFixed(2));</script></strong></td>
+  </tr>
+  <tr>
+    <td colspan="5" width="121%"><strong>
+
+        OUR SHIPPING POLICY IS: <br>
+        Subtotals of $0 - $49.99 will be charged $2 shipping. <br>
+        Subtotals of $50 - $99.99 will be charged $5 shipping. <br>
+        Subtotals over $100 will be charged 5% of the subtotal amount. <br>
+
+      </strong></td>
+  </tr>
+  </tbody>
+</table>
+
+<br>
+<div>
+  </script>
+  <form action="/checkout" method=GET>
+    Enter your email for a copy of your Invoice: <input type=email name=email>
+    <input type=submit value="Checkout">
+  </form>
+</div>
+<footer>
+  <h1>
+    Eat.Sleep.Yoga.Repeat
+  </h1>
+  <h1>
+    <script>document.write(`Thank you ${params.get('username')} for your purchase!!!`);</script>
+  </h1>
+</footer>
+</body>

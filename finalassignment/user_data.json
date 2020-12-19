@@ -1,0 +1,38 @@
+{
+    "lbars": {
+        "username": "lbars",
+        "password": "Landon",
+        "email": "lbars@hawaii.edu",
+        "fullname": "Landon Barsatan"
+    },
+    "itm352": {
+        "username": "itm352",
+        "password": "grader",
+        "email": "student@hawaii.edu",
+        "fullname": "Student Test"
+    },
+    "test1": {
+        "username": "test1",
+        "password": "123456",
+        "email": "test1@hawaii.edu",
+        "fullname": "test one"
+    },
+    "rendoru": {
+        "username": "rendoru",
+        "password": "123456",
+        "email": "rendlem@hawaii.edu",
+        "fullname": "Rendle Mones"
+    },
+    "johnd": {
+        "username": "johnd",
+        "password": "123456",
+        "email": "test@gmail.com",
+        "fullname": "John Doe"
+    },
+    "test2": {
+        "username": "test2",
+        "password": "123456",
+        "email": "test2@gmail.com",
+        "fullname": "Test Two"
+    }
+}

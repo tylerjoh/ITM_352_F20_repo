@@ -1,0 +1,114 @@
+<!-- Products Display Page -->
+<!-- Referenced code from Assignment 2 and SmartPhone Products WODs, as well as Dan Port's Assignment 3 Examples and Stack Exchange & W3Schools -->
+
+<head>
+
+
+    <script src="./functions.js"></script>
+    <script>
+        var products_data;
+        var total = 0;
+        loadJSON('get_products_data', function (response) {
+            // Parsing JSON string into object
+            products_data = JSON.parse(response);
+        });
+        loadJSON('get_cart', function (response) {
+            // Parsing JSON string into object
+            shopping_cart = JSON.parse(response);
+            for (pk in shopping_cart) {
+                total += shopping_cart[pk].reduce((a, b) => a + b);
+            }
+        });
+        console.log(shopping_cart);
+        // get the query string
+        let params = (new URL(document.location)).searchParams;
+        if (params.has('products_key')) {
+            var this_product_key = params.get('products_key');
+        } else {
+            //document.write('no products key in query string');
+            document.stop;
+        }
+    </script>
+
+    <!-- Link for stylesheet -->
+    <link href="stylesheet.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <header>
+        <h1>Marcus and Tyler's Lululemon Store!! :)</h1>
+    </header>
+
+    <h1>
+        <script>
+            nav_bar(this_product_key, products_data);
+        </script>
+    </h1>
+
+    <div>
+        <main id="products_main_display">
+            <script>
+                // for loop to traverse through products array
+                for (i = 0; i < products.length; i++) {
+                    document.write(`
+                                <h2>${products[i].model}</h2>
+                                <h2>${products[i].color}</h2> 
+                                <img src="${products[i].image}"> 
+                                <h2>$${products[i].price}</h2>                
+                                <div>
+                                    <label id="quantity${i}_label"}">Quantity:</label>
+                                    <input type="text" placeholder="enter amount here!" name="quantity${i}" 
+                                    onkeyup="checkQuantityTextbox(this);">         
+                                </div>
+
+                        
+                        `)
+                }
+            </script>
+            <br>
+        </main>
+    </div>
+    <footer id="display_footer">
+        <h1>
+            Namaste
+        </h1>
+    </footer>
+
+</body>
+
+<h2>You have <span id="cart_total">0</span> items in your shopping cart</h2>
+<script>
+    cart_total.innerHTML = total;
+    // This function takes a string assumed to be a key in the products array above to display and select the corresponding products
+    var order_str = '';
+    order_str += `<h1>Please select what ${this_product_key} you want</h1><br>`;
+
+    products = products_data[this_product_key];
+    for (i = 0; i < products.length; i++) {
+        order_str += `<h1><img src = "${products[i].image}"</h1>`;
+        order_str += ` <h1>${products[i]['model']}</h1>`;
+        order_str += ` <h2>${products[i]['color']}</h2>`;
+        order_str += ` <h2>$${products[i]['price']}</h2>`;
+    };
+
+    // We put the whole table in the form so that anything entered in it will get submitted
+    order_str += `<FORM action="/add_to_cart" method="GET">
+                <INPUT TYPE="HIDDEN" NAME="products_key" VALUE="${this_product_key}">
+                    <TABLE BORDER>
+                            <TR><TD><B><BIG>Lululemon Product</TD>
+                            <TD><B><BIG>Color</TD>
+                            <TD><B><BIG>Price</TD>
+                            <TD><B><BIG>Quantity Desired</TD></TR>`;
+    products = products_data[this_product_key];
+    for (i = 0; i < products.length; i++) {
+        order_str += `<TR><TD>${products[i]['model']}</TD>
+                    <TD>${products[i]['color']}</TD>
+                    <TD>$${products[i]['price']}</TD><TD>
+                    <INPUT TYPE="TEXT"  name="quantities[${i}]" value="${(typeof shopping_cart[this_product_key] != 'undefined') ? shopping_cart[products_key][i] : 0}"></TD></TR>`;
+    }
+    order_str += `</TABLE><br>
+    <h1><INPUT TYPE="SUBMIT"  name="Submit" value="Add To Cart"></h1>
+    </FORM>`;
+    document.write(order_str);
+</script>
