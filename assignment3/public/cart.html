@@ -4,80 +4,15 @@
     
     <script>
 
-var cart = sessionStorage; //setting variable cart 
-    var quantities = []; //setting a quantity variable 
 
-    //if cart has information 
-    if (cart.length == 0) { 
-        history.go(-1); // goes back to previous page if empty 
-        alert('Shopping Cart is Empty! Please Select Products'); 
-    };
-
-    //function made with help from w3school.com 
-    function getCookie(cname) {
-        var name = cname + "=";
-        var decodedCookie = decodeURIComponent(document.cookie); //decodes cookie
-        var ca = decodedCookie.split(';'); 
-        for (var i = 0; i < ca.length; i++) { 
-            var c = ca[i];
-            while (c.charAt(0) == ' ') {
-                c = c.substring(1);
-            }
-            if (c.indexOf(name) == 0) {
-                return c.substring(name.length, c.length);
-            }
-        }
-        return "";
-    };
-    //function to change product amount by positive 1 in cart 
-    function addItem(theProduct, theIndex) { 
-        var thisRowQty = parseInt(sessionStorage.getItem(`${theProduct}${theIndex}`)); 
-        thisRowQty += 1; //adds 1
-        sessionStorage.setItem(`${theProduct}${theIndex}`, thisRowQty); //gives the new value to the session 
-        window.location.reload(); //reloads the page 
-    };
-    //function to change product amount by negative 1 in cart 
-    function removeItem(theProduct, theIndex) { 
-        var thisRowQty = parseInt(sessionStorage.getItem(`${theProduct}${theIndex}`)); 
-        if (thisRowQty > 0) { 
-            thisRowQty -= 1; //subtract 1
-            sessionStorage.setItem(`${theProduct}${theIndex}`, thisRowQty); //gives the session the new value 
-            window.location.reload(); //reloads the page 
-        }
-
-    };
-
-    //made with help from stackoverflow.com 
-    function GoBackWithRefresh(event) { //takes you back to previous page
-        var past = document.referrer;
-        var pastPage = past.split('/').pop(); 
-
-        if (pastPage != 'login.html' && pastPage != 'register.html' && pastPage != 'cart.html') { 
-            window.location = past;
-        } else if (pastPage == 'login.html' && pastPage == 'register.html' && pastPage == 'cart.html') {
-            window.history.go(-2); //go back 2 pages instead of to that last page if it was login, cart or register
+        // get the query string
+        let params = (new URL(document.location)).searchParams;
+        if (params.has('products_key')) {
+            var this_product_key = params.get('products_key');
         } else {
-            window.location.href = './index.html'; //takes you to home page
+            document.write('no products key in query string');
+            document.stop;
         }
-    };
-//insures that the cart has proper data and that the user is logged in 
-    function checkCart() {
-        if (cart.length == 0) {
-            window.location.reload();
-        } else if (theUsername == '') {
-            alert(`Please log in before viewing cart`);
-            window.location.href = './login.html';
-        } else {
-            fetch("/generateInvoice?cartData="+JSON.stringify(cart)+"&cookieData="+JSON.stringify(document.cookie), 
-            {
-                method: "POST"
-            }).then(function (res) {
-                return res.text();
-            }).then(function (data) {
-                document.write(data);
-            })
-        }
-    }
 
     </script>
 </head>

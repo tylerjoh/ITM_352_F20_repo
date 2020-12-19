@@ -112,3 +112,10 @@ h1 {
     font-style: sans-serif;
     font-display: sans-serif;
 }
+body {
+  /* style for body */
+  text-align: center;
+  color: white;
+  /* create a gradient background*/
+  background: linear-gradient(150deg, rgb(50, 78, 114), rgba(151, 40, 40, 0));
+}

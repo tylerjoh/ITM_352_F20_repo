@@ -23,7 +23,7 @@
             has_errors = false; // assume quantities are valid//
             total_qty = 0; // need to check if something was selected so we will look if the total > 0//
             //For every product in the array, write the product number, display its image and name, and list price//
-            for (i = 0; i < products[i].length; i++) {
+            for (i = 0; i < products.length; i++) {
                 if (params.has(`quantity${i}`)) {
                     a_qty = params.get(`quantity${i}`);
                     // make textboxes sticky in case of invalid data//
