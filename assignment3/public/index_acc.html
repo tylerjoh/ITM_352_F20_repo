@@ -1,8 +1,6 @@
 <!-- Import products_medium from file -->
 <script src="product_data_acc.js" type="text/javascript"></script>
 <script>
-
-var this_product_key = ''
     //Referenced from assignment 1 examples
     function isNonNegInt(q, return_errors = false) {
         errors = []; // will assume there are no errors
@@ -35,6 +33,14 @@ var this_product_key = ''
                     if (!isNonNegInt(a_qty)) {
                         has_errors = true; // invalid quantity
                         checkQuantityTextbox(product_form[`quantity${i}`]); // show where the error is
+                        if (has_errors) {
+                alert("Please enter numeric quantities.");
+            } else if (total_qty == 0) { // alert for when there are 0 quantities entered
+                alert("Please enter quantities for products you wish to purchase.");
+            } else { // redirecting to invoice when quantities are valid
+                window.location = `./login.html${document.location.search}`;
+                window.stop;
+            }
                     }
                 }
             }
@@ -138,7 +144,7 @@ var this_product_key = ''
                                     <input type="text" placeholder="0" name="quantity${i}"
                                 onkeyup="checkQuantityTextbox(this);">
                                 <div class="nav-item ml-auto">
-                                 <input type="submit" value="Add to Cart" name="purchase_submit_button">
+                                 <input type="Submit" value="Add to Cart" name="purchase_submit_button">
                             </div>
                              </div>
                              
